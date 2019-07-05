@@ -17,7 +17,6 @@ interface IAccess extends IItem
     const FIELD__SECTION = 'section';
     const FIELD__SUBJECT = 'subject';
     const FIELD__OPERATION = 'operation';
-    const FIELD__RULES = 'rules';
 
     /**
      * @return mixed
@@ -38,11 +37,6 @@ interface IAccess extends IItem
      * @return string|array
      */
     public function getOperation();
-
-    /**
-     * @return array
-     */
-    public function getRules();
 
     /**
      * @param $object
@@ -71,11 +65,4 @@ interface IAccess extends IItem
      * @return $this
      */
     public function setOperation($operation);
-
-    /**
-     * @param $rules
-     *
-     * @return $this
-     */
-    public function setRules($rules);
 }

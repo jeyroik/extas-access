@@ -7,13 +7,13 @@
     }
   ],
   "access": [
-    { "object" : "public", "section" : "api", "subject" : "sign", "operation" : "in", "rules" : [ ]},
-    { "object" : "public", "section" : "api", "subject" : "sign", "operation" : "up", "rules" : [ ]},
-    { "object" : "authorized", "section" : "api", "subject" : "sign", "operation" : "out", "rules" : [ ]},
-    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "create", "rules" : [ ]},
-    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "edit", "rules" : [ ]},
-    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "delete", "rules" : [ ]},
-    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "view", "rules" : [ ]}
+    { "object" : "public", "section" : "api", "subject" : "sign", "operation" : "in"},
+    { "object" : "public", "section" : "api", "subject" : "sign", "operation" : "up"},
+    { "object" : "authorized", "section" : "api", "subject" : "sign", "operation" : "out"},
+    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "create"},
+    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "edit"},
+    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "delete"},
+    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "view"}
   ],
   "plugins": [
     {

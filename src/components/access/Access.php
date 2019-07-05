@@ -45,14 +45,6 @@ class Access extends Item implements IAccess
     }
 
     /**
-     * @return array
-     */
-    public function getRules()
-    {
-        return $this->config[static::FIELD__RULES] ?? [];
-    }
-
-    /**
      * @param $object
      *
      * @return IAccess
@@ -96,18 +88,6 @@ class Access extends Item implements IAccess
     public function setOperation($operation)
     {
         $this->config[static::FIELD__OPERATION] = $operation;
-
-        return $this;
-    }
-
-    /**
-     * @param $rules
-     *
-     * @return IAccess
-     */
-    public function setRules($rules)
-    {
-        $this->config[static::FIELD__RULES] = $rules;
 
         return $this;
     }
