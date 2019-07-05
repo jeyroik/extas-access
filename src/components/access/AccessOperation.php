@@ -38,7 +38,7 @@ class AccessOperation extends Access implements IAccessOperation
         $operation = $this->getOne();
 
         if (!$operation) {
-            $operation = $repo->create($this->__toArray());
+            $operation = $repo->create($this);
             return $operation ? true : false;
         }
 

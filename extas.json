@@ -17,7 +17,7 @@
   ],
   "plugins": [
     {
-      "class": "extas\\components\\plugins\\access\\AccessPluginInstall",
+      "class": "extas\\components\\plugins\\PluginInstallAccess",
       "stage": "extas.install"
     }
   ]
