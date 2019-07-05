@@ -1,0 +1,12 @@
+{
+  "name": "jeyroik/extas-access",
+  "description": "Extas access package",
+  "require": {
+    "jeyroik/extas-foundation": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "extas\\": "src/"
+    }
+  }
+}

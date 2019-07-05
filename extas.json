@@ -1,0 +1,24 @@
+{
+  "name": "extas.access",
+  "container_classes": [
+    {
+      "interface": "extas\\interfaces\\access\\IAccessRepository",
+      "class": "extas\\components\\access\\AccessRepository"
+    }
+  ],
+  "access": [
+    { "object" : "public", "section" : "api", "subject" : "sign", "operation" : "in", "rules" : [ ]},
+    { "object" : "public", "section" : "api", "subject" : "sign", "operation" : "up", "rules" : [ ]},
+    { "object" : "authorized", "section" : "api", "subject" : "sign", "operation" : "out", "rules" : [ ]},
+    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "create", "rules" : [ ]},
+    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "edit", "rules" : [ ]},
+    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "delete", "rules" : [ ]},
+    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "view", "rules" : [ ]}
+  ],
+  "plugins": [
+    {
+      "class": "extas\\components\\plugins\\access\\AccessPluginInstall",
+      "stage": "extas.install"
+    }
+  ]
+}
