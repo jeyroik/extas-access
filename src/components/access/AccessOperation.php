@@ -14,8 +14,6 @@ use extas\components\SystemContainer;
  */
 class AccessOperation extends Access implements IAccessOperation
 {
-    protected $operation = '';
-
     /**
      * AccessSection constructor.
      *
@@ -23,8 +21,7 @@ class AccessOperation extends Access implements IAccessOperation
      */
     public function __construct(array $config = [])
     {
-        $this->operation && ($config[IAccess::FIELD__OPERATION] = $this->operation);
-
+        $this->applyDefaults($config);
         parent::__construct($config);
     }
 
@@ -93,6 +90,71 @@ class AccessOperation extends Access implements IAccessOperation
     }
 
     /**
+     * @param array|string $object
+     *
+     * @return $this
+     */
+    public function addObject($object)
+    {
+        return $this->add(static::FIELD__OBJECT, $object);
+    }
+
+    /**
+     * @param array|string $section
+     *
+     * @return $this
+     */
+    public function addSection($section)
+    {
+        return $this->add(static::FIELD__SECTION, $section);
+    }
+
+    /**
+     * @param array|string $subject
+     *
+     * @return $this
+     */
+    public function addSubject($subject)
+    {
+        return $this->add(static::FIELD__SUBJECT, $subject);
+    }
+
+    /**
+     * @param array|string $operation
+     *
+     * @return $this
+     */
+    public function addOperation($operation)
+    {
+        return $this->add(static::FIELD__OPERATION, $operation);
+    }
+
+    /**
+     * @param string $field
+     * @param array|string $value
+     *
+     * @return $this
+     */
+    protected function add($field, $value)
+    {
+        $getMethod = 'get' . ucfirst($field);
+        $setMethod = 'set' . ucfirst($field);
+
+        $items = $this->$getMethod();
+        $items = is_string($items) ? [$items] : $items;
+
+        if (is_array($value)) {
+            $items = array_merge($items, $value);
+        } elseif (is_string($value)) {
+            $items[] = $value;
+        }
+
+        $this->$setMethod($items);
+
+        return $this;
+    }
+
+    /**
      * @return mixed|IAccess
      */
     protected function getOne()
@@ -115,6 +177,26 @@ class AccessOperation extends Access implements IAccessOperation
     protected function getRepo(): IAccessRepository
     {
         return SystemContainer::getItem(IAccessRepository::class);
+    }
+
+    /**
+     * @param $config
+     */
+    protected function applyDefaults(&$config)
+    {
+        $defaults = $this->getDefaults();
+
+        foreach ($defaults as $field => $value) {
+            $config[$field] = $value;
+        }
+    }
+
+    /**
+     * @return array
+     */
+    protected function getDefaults(): array
+    {
+        return [];
     }
 
     /**

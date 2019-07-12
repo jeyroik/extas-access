@@ -28,4 +28,32 @@ interface IAccessOperation extends IAccess
      * @return bool
      */
     public function exists(): bool;
+
+    /**
+     * @param array|string $operation
+     *
+     * @return $this
+     */
+    public function addOperation($operation);
+
+    /**
+     * @param array|string $subject
+     *
+     * @return $this
+     */
+    public function addSubject($subject);
+
+    /**
+     * @param array|string $section
+     *
+     * @return $this
+     */
+    public function addSection($section);
+
+    /**
+     * @param array|string $object
+     *
+     * @return $this
+     */
+    public function addObject($object);
 }
