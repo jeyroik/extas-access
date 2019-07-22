@@ -1,10 +1,8 @@
 <?php
-namespace extas\components\plugins\access;
+namespace extas\components\plugins;
 
 use extas\components\access\AccessOperation;
-use extas\components\plugins\TInstallMessages;
 use extas\interfaces\packages\IInstaller;
-use extas\components\plugins\Plugin;
 
 use Symfony\Component\Console\Output\OutputInterface;
 
