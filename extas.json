@@ -1,6 +1,6 @@
 {
   "name": "extas.access",
-  "container_classes": [
+  "package_classes": [
     {
       "interface": "extas\\interfaces\\access\\IAccessRepository",
       "class": "extas\\components\\access\\AccessRepository"
