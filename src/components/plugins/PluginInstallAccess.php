@@ -38,7 +38,7 @@ class PluginInstallAccess extends Plugin
                     . $operation->getSubject() . '.'
                     . $operation->getOperation();
 
-                $this->installed($accessString, 'access', $output);
+                $this->installed($accessString, 'access', $output, 'create');
             }
         }
     }
