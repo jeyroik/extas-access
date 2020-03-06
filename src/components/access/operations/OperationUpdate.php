@@ -11,7 +11,7 @@ use extas\components\access\AccessOperation;
  */
 class OperationUpdate extends AccessOperation
 {
-    const NAME = 'update';
+    public const NAME = 'update';
 
     /**
      * @return array

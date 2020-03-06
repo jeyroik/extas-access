@@ -11,7 +11,7 @@ use extas\components\access\AccessOperation;
  */
 class OperationDelete extends AccessOperation
 {
-    const NAME = 'delete';
+    public const NAME = 'delete';
 
     /**
      * @return array

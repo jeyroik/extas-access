@@ -11,7 +11,7 @@ use extas\components\access\AccessOperation;
  */
 class ObjectPublic extends AccessOperation
 {
-    const NAME = 'public';
+    public const NAME = 'public';
 
     /**
      * @return array

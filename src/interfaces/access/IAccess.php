@@ -11,12 +11,12 @@ use extas\interfaces\IItem;
  */
 interface IAccess extends IItem
 {
-    const SUBJECT = 'extas.access';
+    public const SUBJECT = 'extas.access';
 
-    const FIELD__OBJECT = 'object';
-    const FIELD__SECTION = 'section';
-    const FIELD__SUBJECT = 'subject';
-    const FIELD__OPERATION = 'operation';
+    public const FIELD__OBJECT = 'object';
+    public const FIELD__SECTION = 'section';
+    public const FIELD__SUBJECT = 'subject';
+    public const FIELD__OPERATION = 'operation';
 
     /**
      * @return mixed

@@ -23,7 +23,7 @@ use extas\components\access\AccessOperation;
  */
 class OperationCreate extends AccessOperation
 {
-    const NAME = 'create';
+    public const NAME = 'create';
 
     /**
      * @return array

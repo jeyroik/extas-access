@@ -14,11 +14,11 @@ use extas\interfaces\IItem;
  */
 class PluginInstallAccess extends PluginInstallDefault
 {
-    protected $selfUID = '';
-    protected $selfRepositoryClass = IAccessRepository::class;
-    protected $selfSection = 'access';
-    protected $selfName = 'access operation';
-    protected $selfItemClass = Access::class;
+    protected string $selfUID = '';
+    protected string $selfRepositoryClass = IAccessRepository::class;
+    protected string $selfSection = 'access';
+    protected string $selfName = 'access operation';
+    protected string $selfItemClass = Access::class;
 
     /**
      * @param $item

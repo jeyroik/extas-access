@@ -9,7 +9,7 @@ namespace extas\components\access\objects;
  */
 class ObjectRoot extends ObjectAuthorized
 {
-    const NAME = 'root';
+    public const NAME = 'root';
 
     /**
      * @return array

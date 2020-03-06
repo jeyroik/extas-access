@@ -11,7 +11,7 @@ use extas\components\access\AccessOperation;
  */
 class ObjectAuthorized extends AccessOperation
 {
-    const NAME = 'authorized';
+    public const NAME = 'authorized';
 
     /**
      * @return array

@@ -22,7 +22,7 @@ use extas\components\access\AccessOperation;
  */
 class SubjectAccess extends AccessOperation
 {
-    const NAME = 'access';
+    public const NAME = 'access';
 
     /**
      * @return array

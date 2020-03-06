@@ -11,7 +11,7 @@ use extas\components\access\AccessOperation;
  */
 class SectionApi extends AccessOperation
 {
-    const NAME = 'api';
+    public const NAME = 'api';
 
     /**
      * @return array
