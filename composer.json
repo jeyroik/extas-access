@@ -2,8 +2,8 @@
   "name": "jeyroik/extas-access",
   "description": "Extas access package",
   "require": {
-    "jeyroik/extas-foundation": "1.*",
-    "jeyroik/extas-installer": "1.*"
+    "jeyroik/extas-foundation": "2.*",
+    "jeyroik/extas-installer": "2.*"
   },
   "autoload": {
     "psr-4": {
