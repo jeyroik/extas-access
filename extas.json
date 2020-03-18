@@ -1,5 +1,5 @@
 {
-  "name": "extas.access",
+  "name": "extas/access",
   "package_classes": [
     {
       "interface": "extas\\interfaces\\access\\IAccessRepository",
