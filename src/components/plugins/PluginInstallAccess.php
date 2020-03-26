@@ -5,6 +5,7 @@ use extas\components\access\Access;
 use extas\components\access\AccessOperation;
 use extas\interfaces\access\IAccessRepository;
 use extas\interfaces\IItem;
+use extas\interfaces\repositories\IRepository;
 
 /**
  * Class PluginInstallAccess
@@ -38,12 +39,11 @@ class PluginInstallAccess extends PluginInstallDefault
 
     /**
      * @param array $item
-     * @param array $serviceConfig
-     * @param \extas\interfaces\repositories\IRepository $repo
+     * @param IRepository $repo
      *
      * @return IItem|null
      */
-    protected function findItem($item, $serviceConfig, $repo): ?IItem
+    protected function findItem($item, $repo): ?IItem
     {
         $operation = new AccessOperation($item);
 
