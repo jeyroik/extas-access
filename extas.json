@@ -6,15 +6,6 @@
       "class": "extas\\components\\access\\AccessRepository"
     }
   ],
-  "access": [
-    { "object" : "public", "section" : "api", "subject" : "sign", "operation" : "in"},
-    { "object" : "public", "section" : "api", "subject" : "sign", "operation" : "up"},
-    { "object" : "authorized", "section" : "api", "subject" : "sign", "operation" : "out"},
-    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "create"},
-    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "update"},
-    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "delete"},
-    { "object" : "admin", "section" : "api", "subject" : "access", "operation" : "view"}
-  ],
   "plugins": [
     {
       "class": "extas\\components\\plugins\\PluginInstallAccess",
