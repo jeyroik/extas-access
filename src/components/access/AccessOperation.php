@@ -128,7 +128,7 @@ class AccessOperation extends Access implements IAccessOperation
         $items = is_string($items) ? [$items] : $items;
 
         if (is_array($value)) {
-            $diff = array_diff($items, $value);
+            $diff = array_diff($value, $items);
             $items = array_merge($items, $diff);
         } elseif (is_string($value)) {
             $items[] = $value;
