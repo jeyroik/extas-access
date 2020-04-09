@@ -99,16 +99,16 @@ class AccessOperationTest extends TestCase
         $this->assertEquals(['admin', 'test', 'test2'], $operation->getObject());
 
         $operation->addSubject('test');
-        $this->assertEquals(['players', 'test'], $operation->getObject());
+        $this->assertEquals(['players', 'test'], $operation->getSubject());
 
         $operation->addSubject(['test', 'test2']);
-        $this->assertEquals(['players', 'test', 'test2'], $operation->getObject());
+        $this->assertEquals(['players', 'test', 'test2'], $operation->getSubject());
 
         $operation->addOperation('test');
-        $this->assertEquals(['index', 'test'], $operation->getObject());
+        $this->assertEquals(['index', 'test'], $operation->getOperation());
 
         $operation->addOperation(['test', 'test2']);
-        $this->assertEquals(['index', 'test', 'test2'], $operation->getObject());
+        $this->assertEquals(['index', 'test', 'test2'], $operation->getOperation());
     }
 
     public function testApplyDefaults()
