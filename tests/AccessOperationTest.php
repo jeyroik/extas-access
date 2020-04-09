@@ -7,6 +7,18 @@ use extas\interfaces\access\IAccessRepository;
 use extas\components\access\AccessRepository;
 use extas\components\access\Access;
 use extas\interfaces\repositories\IRepository;
+use extas\components\access\objects\ObjectAuthorized;
+use extas\components\access\objects\ObjectPublic;
+use extas\components\access\objects\ObjectRoot;
+use extas\components\access\operations\OperationCreate;
+use extas\components\access\operations\OperationDelete;
+use extas\components\access\operations\OperationOwn;
+use extas\components\access\operations\OperationRead;
+use extas\components\access\operations\OperationShare;
+use extas\components\access\operations\OperationUpdate;
+use extas\components\access\sections\SectionApi;
+use extas\components\access\sections\SectionData;
+use extas\components\access\subjects\SubjectAccess;
 
 /**
  * Class AccessOperationTest
@@ -92,11 +104,11 @@ class AccessOperationTest extends TestCase
             AccessOperation::FIELD__OBJECT => 'admin'
         ]);
 
-        $operation->addObject('test');
-        $this->assertEquals(['admin', 'test'], $operation->getObject());
+        $operation->addSection('test2');
+        $this->assertEquals(['test', 'test2'], $operation->getSection());
 
-        $operation->addObject(['test', 'test2']);
-        $this->assertEquals(['admin', 'test', 'test2'], $operation->getObject());
+        $operation->addSection(['test', 'test3']);
+        $this->assertEquals(['test', 'test2', 'test3'], $operation->getSection());
 
         $operation->addSubject('test');
         $this->assertEquals(['players', 'test'], $operation->getSubject());
@@ -109,6 +121,12 @@ class AccessOperationTest extends TestCase
 
         $operation->addOperation(['test', 'test2']);
         $this->assertEquals(['index', 'test', 'test2'], $operation->getOperation());
+
+        $operation->addObject('test');
+        $this->assertEquals(['admin', 'test'], $operation->getObject());
+
+        $operation->addObject(['test', 'test2']);
+        $this->assertEquals(['admin', 'test', 'test2'], $operation->getObject());
     }
 
     public function testApplyDefaults()
@@ -125,5 +143,44 @@ class AccessOperationTest extends TestCase
         };
 
         $this->assertEquals('extas.access.operation', $definedAccess->getObject());
+    }
+
+    public function testHelpers()
+    {
+        $op = new ObjectAuthorized();
+        $this->assertEquals(ObjectAuthorized::NAME, $op->getObject());
+
+        $op = new ObjectPublic();
+        $this->assertEquals(ObjectPublic::NAME, $op->getObject());
+
+        $op = new ObjectRoot();
+        $this->assertEquals(ObjectRoot::NAME, $op->getObject());
+
+        $op = new OperationCreate();
+        $this->assertEquals(OperationCreate::NAME, $op->getOperation());
+
+        $op = new OperationDelete();
+        $this->assertEquals(OperationDelete::NAME, $op->getOperation());
+
+        $op = new OperationOwn();
+        $this->assertEquals(OperationOwn::NAME, $op->getOperation());
+
+        $op = new OperationRead();
+        $this->assertEquals(OperationRead::NAME, $op->getOperation());
+
+        $op = new OperationShare();
+        $this->assertEquals(OperationShare::NAME, $op->getOperation());
+
+        $op = new OperationUpdate();
+        $this->assertEquals(OperationUpdate::NAME, $op->getOperation());
+
+        $op = new SectionApi();
+        $this->assertEquals(SectionApi::NAME, $op->getSection());
+
+        $op = new SectionData();
+        $this->assertEquals(SectionData::NAME, $op->getSection());
+
+        $op = new SubjectAccess();
+        $this->assertEquals(SubjectAccess::NAME, $op->getSubject());
     }
 }
