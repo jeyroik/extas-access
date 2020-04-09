@@ -19,10 +19,7 @@ class OperationShare extends AccessOperation
     protected function getDefaults(): array
     {
         return [
-            static::FIELD__OPERATION => [
-                static::NAME,
-                OperationOwn::NAME
-            ]
+            static::FIELD__OPERATION => static::NAME
         ];
     }
 }
