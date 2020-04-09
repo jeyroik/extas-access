@@ -44,22 +44,6 @@ class AccessOperation extends Access implements IAccessOperation
 
     /**
      * @return bool
-     * @throws \Exception
-     */
-    public function update(): bool
-    {
-        $operation = $this->getOne();
-
-        if ($operation) {
-            $updated = $this->getRepo()->update($operation);
-            return $updated ? true : false;
-        }
-
-        throw new \Exception('Unknown operation');
-    }
-
-    /**
-     * @return bool
      * @throws
      */
     public function delete(): bool
@@ -144,7 +128,8 @@ class AccessOperation extends Access implements IAccessOperation
         $items = is_string($items) ? [$items] : $items;
 
         if (is_array($value)) {
-            $items = array_merge($items, $value);
+            $diff = array_diff($items, $value);
+            $items = array_merge($items, $diff);
         } elseif (is_string($value)) {
             $items[] = $value;
         }

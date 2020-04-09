@@ -54,36 +54,6 @@ class AccessOperationTest extends TestCase
         $operation->create();
     }
 
-    public function testUpdate()
-    {
-        $operation = new AccessOperation([
-            AccessOperation::FIELD__SECTION => 'test',
-            AccessOperation::FIELD__SUBJECT => 'players',
-            AccessOperation::FIELD__OPERATION => 'index',
-            AccessOperation::FIELD__OBJECT => 'admin'
-        ]);
-        $operation->create();
-
-        $operation->setObject('guest');
-        $operation->update();
-
-        /**
-         * @var Access $access
-         */
-        $access = $this->accessRepo->one([Access::FIELD__SECTION => 'test']);
-        $this->assertEquals('guest', $access->getObject());
-
-        $notExistedOperation = new AccessOperation([
-            AccessOperation::FIELD__SECTION => 'unknown',
-            AccessOperation::FIELD__SUBJECT => 'unknown',
-            AccessOperation::FIELD__OPERATION => 'unknown',
-            AccessOperation::FIELD__OBJECT => 'unknown'
-        ]);
-
-        $this->expectExceptionMessage('Unknown operation');
-        $notExistedOperation->update();
-    }
-
     public function testDelete()
     {
         $operation = new AccessOperation([

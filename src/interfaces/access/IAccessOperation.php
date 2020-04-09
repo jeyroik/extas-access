@@ -17,11 +17,6 @@ interface IAccessOperation extends IAccess
     /**
      * @return bool
      */
-    public function update(): bool;
-
-    /**
-     * @return bool
-     */
     public function delete(): bool;
 
     /**
