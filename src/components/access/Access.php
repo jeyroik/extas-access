@@ -1,6 +1,7 @@
 <?php
 namespace extas\components\access;
 
+use extas\components\THasId;
 use extas\interfaces\access\IAccess;
 use extas\components\Item;
 
@@ -12,6 +13,8 @@ use extas\components\Item;
  */
 class Access extends Item implements IAccess
 {
+    use THasId;
+
     /**
      * @return mixed
      */

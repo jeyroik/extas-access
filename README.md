@@ -1,4 +1,7 @@
-# extas-access
+![tests](https://github.com/jeyroik/extas-access/workflows/PHP%20Composer/badge.svg?branch=master&event=push)
+![codecov.io](https://codecov.io/gh/jeyroik/extas-access/coverage.svg?branch=master)
+
+# Описание
 
 Пакет для управления правами доступа.
 

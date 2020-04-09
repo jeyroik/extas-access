@@ -1,6 +1,7 @@
 <?php
 namespace extas\interfaces\access;
 
+use extas\interfaces\IHasId;
 use extas\interfaces\IItem;
 
 /**
@@ -9,7 +10,7 @@ use extas\interfaces\IItem;
  * @package extas\interfaces\access
  * @author Jeyroik <jeyroik@gmail.com>
  */
-interface IAccess extends IItem
+interface IAccess extends IItem, IHasId
 {
     public const SUBJECT = 'extas.access';
 

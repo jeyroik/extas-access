@@ -12,9 +12,8 @@ use extas\interfaces\access\IAccessRepository;
  */
 class AccessRepository extends Repository implements IAccessRepository
 {
-    protected string $pk = '_id';
+    protected string $pk = Access::FIELD__ID;
     protected string $name = 'access';
     protected string $scope = 'extas';
-    protected string $idAs = '_id';
     protected string $itemClass = Access::class;
 }

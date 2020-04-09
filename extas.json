@@ -10,15 +10,10 @@
     {
       "class": "extas\\components\\plugins\\PluginInstallAccess",
       "stage": "extas.install"
-    }
-  ],
-  "translates": [
+    },
     {
-      "lang_source": "en",
-      "lang_translated": "ru",
-      "source": "Access denied",
-      "translated": "Доступ запрещён",
-      "type": "danger"
+      "class": "extas\\components\\plugins\\repositories\\PluginFieldUuid",
+      "stage": "extas.access.create.before"
     }
   ]
 }
