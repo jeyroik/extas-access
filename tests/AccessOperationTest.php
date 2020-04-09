@@ -154,7 +154,7 @@ class AccessOperationTest extends TestCase
         $this->assertEquals(ObjectPublic::NAME, $op->getObject());
 
         $op = new ObjectRoot();
-        $this->assertEquals(ObjectRoot::NAME, $op->getObject());
+        $this->assertEquals([ObjectAuthorized::NAME, ObjectRoot::NAME], $op->getObject());
 
         $op = new OperationCreate();
         $this->assertEquals(OperationCreate::NAME, $op->getOperation());
