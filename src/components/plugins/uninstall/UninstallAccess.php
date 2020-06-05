@@ -1,19 +1,18 @@
 <?php
-namespace extas\components\plugins;
+namespace extas\components\plugins\uninstall;
 
 use extas\components\access\Access;
-use extas\interfaces\access\IAccessRepository;
 
 /**
- * Class PluginInstallAccess
+ * Class UninstallAccess
  *
- * @package extas\components\plugins\access
+ * @package extas\components\plugins\uninstall
  * @author jeyroik@gmail.com
  */
-class PluginInstallAccess extends PluginInstallDefault
+class UninstallAccess extends UninstallSection
 {
     protected string $selfUID = Access::FIELD__ID;
-    protected string $selfRepositoryClass = IAccessRepository::class;
+    protected string $selfRepositoryClass = 'accessRepository';
     protected string $selfSection = 'access';
     protected string $selfName = 'access operation';
     protected string $selfItemClass = Access::class;
