@@ -3,11 +3,12 @@ namespace extas\components\access;
 
 use extas\interfaces\access\IAccess;
 use extas\interfaces\access\IAccessOperation;
-use extas\interfaces\access\IAccessRepository;
-use extas\components\SystemContainer;
+use extas\interfaces\repositories\IRepository;
 
 /**
  * Class AccessOperation
+ *
+ * @method IRepository accessRepository()
  *
  * @package extas\components\access
  * @author jeyroik@gmail.com
@@ -31,11 +32,10 @@ class AccessOperation extends Access implements IAccessOperation
      */
     public function create(): bool
     {
-        $repo = $this->getRepo();
         $operation = $this->getOne();
 
         if (!$operation) {
-            $operation = $repo->create($this);
+            $operation = $this->accessRepository()->create($this);
             return $operation ? true : false;
         }
 
@@ -51,7 +51,7 @@ class AccessOperation extends Access implements IAccessOperation
         $operation = $this->getOne();
 
         if ($operation) {
-            $deleted = $this->getRepo()->delete([
+            $deleted = $this->accessRepository()->delete([
                 IAccess::FIELD__SECTION => $operation->getSection(),
                 IAccess::FIELD__OBJECT => $operation->getObject(),
                 IAccess::FIELD__SUBJECT => $operation->getSubject(),
@@ -144,7 +144,6 @@ class AccessOperation extends Access implements IAccessOperation
      */
     protected function getOne()
     {
-        $repo = $this->getRepo();
         $where = [
             IAccess::FIELD__OBJECT => $this->getObject()
         ];
@@ -153,15 +152,7 @@ class AccessOperation extends Access implements IAccessOperation
         $this->getSubject() && ($where[IAccess::FIELD__SUBJECT] = $this->getSubject());
         $this->getOperation() && ($where[IAccess::FIELD__OPERATION] = $this->getOperation());
 
-        return $repo->one($where);
-    }
-
-    /**
-     * @return IAccessRepository
-     */
-    protected function getRepo(): IAccessRepository
-    {
-        return SystemContainer::getItem(IAccessRepository::class);
+        return $this->accessRepository()->one($where);
     }
 
     /**

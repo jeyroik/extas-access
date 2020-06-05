@@ -1,12 +1,10 @@
 <?php
+namespace tests;
 
-use PHPUnit\Framework\TestCase;
+use extas\components\extensions\ExtensionRepository;
+use extas\components\repositories\TSnuffRepository;
 use extas\components\access\AccessOperation;
-use extas\components\SystemContainer;
-use extas\interfaces\access\IAccessRepository;
 use extas\components\access\AccessRepository;
-use extas\components\access\Access;
-use extas\interfaces\repositories\IRepository;
 use extas\components\access\objects\ObjectAuthorized;
 use extas\components\access\objects\ObjectPublic;
 use extas\components\access\objects\ObjectRoot;
@@ -20,6 +18,8 @@ use extas\components\access\sections\SectionApi;
 use extas\components\access\sections\SectionData;
 use extas\components\access\subjects\SubjectAccess;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Class AccessOperationTest
  *
@@ -27,27 +27,22 @@ use extas\components\access\subjects\SubjectAccess;
  */
 class AccessOperationTest extends TestCase
 {
-    /**
-     * @var IRepository|null
-     */
-    protected ?IRepository $accessRepo = null;
+    use TSnuffRepository;
 
     protected function setUp(): void
     {
         parent::setUp();
         $env = \Dotenv\Dotenv::create(getcwd() . '/tests/');
         $env->load();
-
-        $this->accessRepo = new AccessRepository();
-        SystemContainer::addItem(
-            IAccessRepository::class,
-            AccessRepository::class
-        );
+        $this->registerSnuffRepos([
+            'accessRepository' => AccessRepository::class,
+            'extensionRepository' => ExtensionRepository::class
+        ]);
     }
 
     public function tearDown(): void
     {
-        $this->accessRepo->delete([Access::FIELD__SECTION => 'test']);
+        $this->unregisterSnuffRepos();
     }
 
     public function testCreate()

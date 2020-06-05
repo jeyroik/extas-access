@@ -2,18 +2,31 @@
   "name": "extas/access",
   "package_classes": [
     {
-      "interface": "extas\\interfaces\\access\\IAccessRepository",
+      "interface": "accessRepository",
       "class": "extas\\components\\access\\AccessRepository"
     }
   ],
   "plugins": [
     {
-      "class": "extas\\components\\plugins\\PluginInstallAccess",
-      "stage": "extas.install"
+      "class": "extas\\components\\plugins\\init\\InitAccess",
+      "stage": "extas.init.section.access"
+    },
+    {
+      "class": "extas\\components\\plugins\\uninstall\\UninstallAccess",
+      "stage": "extas.uninstall.section.access"
     },
     {
       "class": "extas\\components\\plugins\\repositories\\PluginFieldUuid",
       "stage": "extas.access.create.before"
+    }
+  ],
+  "extensions": [
+    {
+      "class": "extas\\components\\extensions\\ExtensionRepositoryGet",
+      "interface": "extas\\interfaces\\extensions\\IExtensionRepositoryGet",
+      "subject": "*",
+      "methods": ["accessRepository"],
+      "install_on": "initialization"
     }
   ]
 }
