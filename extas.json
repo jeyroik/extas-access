@@ -19,5 +19,14 @@
       "class": "extas\\components\\plugins\\repositories\\PluginFieldUuid",
       "stage": "extas.access.create.before"
     }
+  ],
+  "extensions": [
+    {
+      "class": "extas\\components\\extensions\\ExtensionRepositoryGet",
+      "interface": "extas\\interfaces\\extensions\\IExtensionRepositoryGet",
+      "subject": "*",
+      "methods": ["accessRepository"],
+      "install_on": "initialization"
+    }
   ]
 }
