@@ -1,7 +1,7 @@
 <?php
 namespace extas\interfaces\access;
 
-use extas\interfaces\IHasId;
+use extas\interfaces\IHaveUUID;
 use extas\interfaces\IItem;
 
 /**
@@ -10,7 +10,7 @@ use extas\interfaces\IItem;
  * @package extas\interfaces\access
  * @author Jeyroik <jeyroik@gmail.com>
  */
-interface IAccess extends IItem, IHasId
+interface IAccess extends IItem, IHaveUUID
 {
     public const SUBJECT = 'extas.access';
 
@@ -19,51 +19,19 @@ interface IAccess extends IItem, IHasId
     public const FIELD__SUBJECT = 'subject';
     public const FIELD__OPERATION = 'operation';
 
-    /**
-     * @return mixed
-     */
-    public function getObject();
+    public function getObject(): string;
 
-    /**
-     * @return string|array
-     */
-    public function getSection();
+    public function getSection(): string;
 
-    /**
-     * @return string|array
-     */
-    public function getSubject();
+    public function getSubject(): string;
 
-    /**
-     * @return string|array
-     */
-    public function getOperation();
+    public function getOperation(): string;
 
-    /**
-     * @param $object
-     *
-     * @return $this
-     */
-    public function setObject($object);
+    public function setObject(string $object): static;
 
-    /**
-     * @param $section
-     *
-     * @return $this
-     */
-    public function setSection($section);
+    public function setSection(string $section): static;
 
-    /**
-     * @param $subject
-     *
-     * @return $this
-     */
-    public function setSubject($subject);
+    public function setSubject(string $subject): static;
 
-    /**
-     * @param $operation
-     *
-     * @return $this
-     */
-    public function setOperation($operation);
+    public function setOperation(string $operation): static;
 }

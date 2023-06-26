@@ -1,5 +1,9 @@
 ![tests](https://github.com/jeyroik/extas-access/workflows/PHP%20Composer/badge.svg?branch=master&event=push)
 ![codecov.io](https://codecov.io/gh/jeyroik/extas-access/coverage.svg?branch=master)
+<a href="https://codeclimate.com/github/jeyroik/extas-access/maintainability"><img src="https://api.codeclimate.com/v1/badges/ffff257103af0ab71a9c/maintainability" /></a>
+[![Latest Stable Version](https://poser.pugx.org/jeyroik/extass-access/v)](//packagist.org/packages/jeyroik/extass-access)
+[![Total Downloads](https://poser.pugx.org/jeyroik/extass-access/downloads)](//packagist.org/packages/jeyroik/extass-access)
+[![Dependents](https://poser.pugx.org/jeyroik/extass-access/dependents)](//packagist.org/packages/jeyroik/extass-access)
 
 # Описание
 
@@ -9,7 +13,7 @@
 
 # Установка
 
-`composer require jeyroik/extas-access:*`
+`composer require jeyroik/extas-access:4.*`
 
 # Использование
 
@@ -31,16 +35,20 @@
 
 ```php
 use \extas\interfaces\access\IAccess;
+use \extas\components\access\Access;
+use \extas\components\access\AccessService;
 
-$operation = new \extas\components\access\AccessOperation([
+$access = new \extas\components\access\Access([
     IAccess::FIELD__OBJECT => 'player.name',
     IAccess::FIELD__SECTION => 'api',
     IAccess::FIELD__SUBJECT => 'player',
     IAccess::FIELD__OPERATION => 'create'
 ]);
 
-if (!$operation->exists()) {
-    $operation->create();
+$accessService = new AccessService();
+
+if (!$accessService->isGranted($access)) {
+    $accessService->grant($access);
 }
 ```
 
@@ -50,57 +58,19 @@ if (!$operation->exists()) {
 
 ```php
 use \extas\interfaces\access\IAccess;
+use \extas\components\access\Access;
+use \extas\components\access\AccessService;
 
-$operation = new \extas\components\access\AccessOperation([
+$access = new \extas\components\access\Access([
     IAccess::FIELD__OBJECT => 'player.name',
     IAccess::FIELD__SECTION => 'api',
     IAccess::FIELD__SUBJECT => 'player',
     IAccess::FIELD__OPERATION => 'create'
 ]);
 
-if (!$operation->exists()) {
-    echo 'Нет доступа';
+$accessService = new AccessService();
+
+if ($accessService->isGranted($access)) {
+    echo 'Access granted';
 }
-```
-
-## Пример комбинированного доступа на основе существующих
-
-`/resources/examples/CombinedAccess.php`
-
-```php
-<?php
-namespace my\extas\access;
-
-use extas\components\access\AccessOperation;
-use extas\components\access\objects\ObjectRoot;
-use extas\components\access\operations\OperationCreate;
-use extas\components\access\sections\SectionData;
-use extas\components\access\subjects\SubjectAccess;
-
-class CombinedAccess extends AccessOperation
-{
-    /**
-     * @return array
-     */
-    protected function getDefaults(): array
-    {
-        $object = new ObjectRoot();
-        $section = new SectionData();
-        $subject = new SubjectAccess();
-        $operation = new OperationCreate();
-
-        return array_merge(
-            $object->__toArray(),
-            $section->__toArray(),
-            $subject->__toArray(),
-            $operation->__toArray()
-        );
-    }
-}
-
-$combined = new CombinedAccess();
-if ($combined->exists()) {
-    echo 'Root can data access create';
-}
-
 ```
