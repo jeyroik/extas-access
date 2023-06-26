@@ -1,9 +1,9 @@
 <?php
 namespace extas\components\access;
 
-use extas\components\THasId;
 use extas\interfaces\access\IAccess;
 use extas\components\Item;
+use extas\components\THasStringId;
 
 /**
  * Class Access
@@ -13,82 +13,50 @@ use extas\components\Item;
  */
 class Access extends Item implements IAccess
 {
-    use THasId;
+    use THasStringId;
 
-    /**
-     * @return mixed
-     */
-    public function getObject()
+    public function getObject(): string
     {
         return $this->config[static::FIELD__OBJECT] ?? '';
     }
 
-    /**
-     * @return string|array
-     */
-    public function getSection()
+    public function getSection(): string
     {
         return $this->config[static::FIELD__SECTION] ?? '';
     }
 
-    /**
-     * @return string|array
-     */
-    public function getSubject()
+    public function getSubject(): string
     {
         return $this->config[static::FIELD__SUBJECT] ?? '';
     }
 
-    /**
-     * @return string|array
-     */
-    public function getOperation()
+    public function getOperation(): string
     {
         return $this->config[static::FIELD__OPERATION] ?? '';
     }
 
-    /**
-     * @param $object
-     *
-     * @return IAccess
-     */
-    public function setObject($object)
+    public function setObject(string $object): static
     {
         $this->config[static::FIELD__OBJECT] = $object;
 
         return $this;
     }
 
-    /**
-     * @param $section
-     *
-     * @return IAccess
-     */
-    public function setSection($section)
+    public function setSection(string $section): static
     {
         $this->config[static::FIELD__SECTION] = $section;
 
         return $this;
     }
 
-    /**
-     * @param $subject
-     *
-     * @return IAccess
-     */
-    public function setSubject($subject)
+    public function setSubject(string $subject): static
     {
         $this->config[static::FIELD__SUBJECT] = $subject;
 
         return $this;
     }
 
-    /**
-     * @param $operation
-     *
-     * @return IAccess
-     */
-    public function setOperation($operation)
+    public function setOperation(string $operation): static
     {
         $this->config[static::FIELD__OPERATION] = $operation;
 
