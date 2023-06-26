@@ -1,4 +1,8 @@
-# 4.0
+# 4.0.1
+
+- Added `composer.lock` into gitignore .
+
+# 4.0.0
 
 - Updated to `extas-foundation` `v6`.
 - Removed `AccessOperation`, `AccessObject`, `AccessSection`, `AccessSubject`, `AccessRepository`.
