@@ -1,5 +1,7 @@
 <?php
 
+use extas\components\repositories\RepoItem;
+
 return [
     "name" => "extas\access",
     "tables" => [
