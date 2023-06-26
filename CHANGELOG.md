@@ -1,3 +1,7 @@
+# 4.0.2
+
+- Added `RepoItem` ns in the `extas.storage.php`.
+
 # 4.0.1
 
 - Added `composer.lock` into gitignore .
